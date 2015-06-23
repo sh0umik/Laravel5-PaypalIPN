@@ -22,7 +22,7 @@ Use case
     
     public function paypalIpn()
     {
-	$ipn = new PaypalIPNListener();
+		$ipn = new PaypalIPNListener();
     	$ipn->use_sandbox = true;
 
     	$verified = $ipn->processIpn();
