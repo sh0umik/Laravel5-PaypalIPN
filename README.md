@@ -9,7 +9,7 @@ PHP-PayPal-IPN
 
 A PayPal Instant Payment Notification (IPN) class for PHP 5. 
 
-Use the `IpnListener` class in your PHP IPN script to handle the encoding 
+Use the `PaypalIPNListener` class in your PHP IPN script to handle the encoding 
 of POST data, post back to PayPal, and parsing of the response from PayPal.
 
 Service for Laravel
@@ -22,7 +22,7 @@ Use case
     
     public function paypalIpn()
     {
-		  $ipn = new PaypalIPNListener();
+	$ipn = new PaypalIPNListener();
     	$ipn->use_sandbox = true;
 
     	$verified = $ipn->processIpn();
