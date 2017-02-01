@@ -5,7 +5,7 @@ https://github.com/Quixotix/PHP-PayPal-IPN
 
 add this to your "require-dev" in composer.json
 
-    "fahim/laravel5-paypal-ipn": "dev-master@dev"
+    "fahim/laravel5-paypal-ipn": "1.0.*"
 
 
 PHP-PayPal-IPN
