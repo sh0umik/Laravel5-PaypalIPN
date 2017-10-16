@@ -5,7 +5,7 @@ https://github.com/Quixotix/PHP-PayPal-IPN
 
 add this to your "require-dev" in composer.json
 
-    "fahim/laravel5-paypal-ipn": "dev-master@dev"
+    "fahim/laravel5-paypal-ipn": "1.0.*"
 
 
 PHP-PayPal-IPN
@@ -21,32 +21,32 @@ Service for Laravel
 	'Fahim\PaypalIPN\PaypalIPNServiceProvider',
 		
 Use case
+```php
+use Fahim\PaypalIPN\PaypalIPNListener;
 
-    use Fahim\PaypalIPN\PaypalIPNListener;
-    
-    public function paypalIpn()
-    {
-		$ipn = new PaypalIPNListener();
-    	$ipn->use_sandbox = true;
+public function paypalIpn()
+{
+    $ipn = new PaypalIPNListener();
+    $ipn->use_sandbox = true;
 
-    	$verified = $ipn->processIpn();
+    $verified = $ipn->processIpn();
 
-    	$report = $ipn->getTextReport();
+    $report = $ipn->getTextReport();
 
-    	Log::info("-----new payment-----");
-    	
-    	Log::info($report);
+    Log::info("-----new payment-----");
 
-    	if ($verified) {
-        	if($_POST['address_status'] == 'confirmed'){
-        	  // Check outh POST variable and insert your logic here
-        		Log::info("payment verified and inserted to db");
-        	}
-    	} else {
-        	Log::info("Some thing went wrong in the payment !");
-    	}
+    Log::info($report);
+
+    if ($verified) {
+        if ($_POST['address_status'] == 'confirmed') {
+            // Check outh POST variable and insert your logic here
+            Log::info("payment verified and inserted to db");
+        }
+    } else {
+        Log::info("Some thing went wrong in the payment !");
     }
-
+}
+```
 Features
 --------
 
@@ -109,10 +109,10 @@ __Solution__
 When cURL is compiled with GnuTLS the call to PayPal will fail if the SSL version
 is not explicitly set as a cURL option. Set the `force_ssl_v3` property to force 
 SSL 3:
-
-    $listener = new IpnListener();
-    $listener->force_ssl_v3 = true;
-
+```php
+$listener = new IpnListener();
+$listener->force_ssl_v3 = true;
+```
 _Note: force_ssl_v3 is now true by default_
 
 
@@ -126,10 +126,10 @@ __Solution__
 
 If you need PHP safe mode, you can disable CURLOPT_FOLLOWLOCATION using the
 `follow_location` property.
-
-    $listener = new IpnListener();
-    $listener->follow_location = false;
-
+```php
+$listener = new IpnListener();
+$listener->follow_location = false;
+```
 _Note: follow_location is now false enabled by default_
 
 
