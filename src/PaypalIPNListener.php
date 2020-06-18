@@ -100,7 +100,7 @@ class PaypalIPNListener
 
         $ch = curl_init();
 
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, !$this->use_sandbox);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
         curl_setopt($ch, CURLOPT_CAINFO,
             __DIR__ . '/cert/api_cert_chain.crt');
