@@ -75,7 +75,7 @@ class PaypalIPNListener
     private $response = '';
 
     const PAYPAL_HOST = 'www.paypal.com';
-    const SANDBOX_HOST = 'www.sandbox.paypal.com';
+    const SANDBOX_HOST = 'ipnpb.paypal.com';
 
     /**
      *  Post Back Using cURL
